@@ -1,0 +1,8 @@
+name: Meta Horizon Start Doc Hub
+theme:
+collections:
+  - docs
+permalink: /:path/:basename/
+baseurl: /start-documentation
+plugins:
+  - jekyll-sitemap

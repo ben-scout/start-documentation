@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:image" content="/start-documentation/images/start_OG_image.png" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <title>{{page.title}} - Meta Horizon Start Docs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Add GitHub Markdown CSS -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-light.min.css">
+  <link rel="stylesheet" href="{{ "/assets/css/styles.css?v=" | append: site.github.build_revision | relative_url }}">
+  <link rel="icon" type="image/x-icon" href="{{ "/images/favicon.ico" | relative_url }}">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+    <div class="header-row">
+      <div class="left-nav">
+        <button class="hamburger" id="menu-toggle">☰</button>
+        <div class="logo"><a href="/start-documentation/" id="logo-link">Meta Horizon Start Docs</a></div>
+        <div class="mobile-title mobile-only"><a href="/start-documentation/">Meta Horizon Start Docs</a></div>
+        <nav class="nav-links">
+           <a href="/start-documentation/docs/meta-horizon-docs/start-documents/" target="_blank">Start Program Docs</a>
+        <a href="https://developers.meta.com/horizon/develop" target="_blank">Meta Developer Docs</a>
+        <a href="https://communityforums.atmeta.com/category/horizon-developer-forum"
+          target="_blank">Forums</a>
+        </nav>
+      </div>
+      <div class="right-controls">
+        <a href="https://www.youtube.com/@metahorizonstart" target="_blank" style="color: #FF0000;">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <button id="theme-toggle" aria-label="Toggle dark mode">🌙/☀️</button>
+      </div>
+    </div>
+  </header>
+  <div class="page-body">
+    <aside class="sidebar">
+      <button class="sidebar-close" id="sidebar-close" aria-label="Close sidebar">✕</button>
+      <h2>Overview</h2>
+      <input type="text" id="search-input" placeholder="Search documents..." />
+
+      {% assign all_docs_pages = site.pages | where_exp: "page", "page.path contains 'docs/'" %}
+
+      {% assign folder_list = "" | split: "" %}
+      {% for doc in all_docs_pages %}
+      {% assign parts = doc.path | split: '/' %}
+      {% assign folder_name = parts[1] %}
+      {% if folder_name %}
+      {% unless folder_list contains folder_name %}
+      {% assign folder_list = folder_list | push: folder_name %}
+      {% endunless %}
+      {% endif %}
+      {% endfor %}
+
+      <ul id="doc-list">
+
+        {% for folder in folder_list %}
+
+        {% assign folder_docs = all_docs_pages | where_exp: "doc", "doc.path contains folder" %}
+
+        {% assign folder_is_open = false %}
+        {% for doc in folder_docs %}
+        {% if doc.url == page.url %}
+        {% assign folder_is_open = true %}
+        {% break %}
+        {% endif %}
+        {% endfor %}
+
+        <li>
+          <div class="folder-toggle{% if folder_is_open %} open{% endif %}" role="button" tabindex="0">
+            <span class="folder-name">{{ folder | replace: '-', ' ' | capitalize }}</span>
+            <svg class="chevron-icon" width="12" height="12" viewBox="0 0 320 512" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z">
+              </path>
+            </svg>
+          </div>
+          <ul class="dropdown{% if folder_is_open %} open{% endif %}">
+            {% for doc in folder_docs %}
+
+            {% assign parts = doc.path %}
+            {% assign item = parts[2] | replace: '.md', '' %}
+            {% if item %}
+            <li>
+              <a href="{{ doc.url | relative_url }}" {% if doc.url==page.url %} class="active" {% endif %}>
+                {{ item }}
+                {{doc.title}}
+              </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
+        {% endfor %}
+      </ul>
+      <hr class="mobile-sidebar-divider mobile-only" />
+      <div class="mobile-sidebar-nav mobile-only">
+         <a href="/start-documentation/docs/meta-horizon-docs/start-documents/" target="_blank">Start Program Docs</a>
+        <a href="https://developers.meta.com/horizon/develop" target="_blank">Meta Developer Docs</a>
+        <a href="https://communityforums.atmeta.com/category/horizon-developer-forum"
+          target="_blank">Forums</a>
+      </div>
+
+    </aside>
+
+    <main class="content">
+      <div class="doc-container">
+        <div id="doc-content" class="markdown-body"> {{ content }}</div>
+
+      </div>
+    </main>
+
+    <aside class="right-sidebar">
+      <h3>On this page</h3>
+      <ul id="doc-toc"></ul>
+      {% include toc.html html=content id="right-sidebar-toc" item_class="toc-item-%level%"
+      submenu_class="toc-sub-item%level%" ordered="true"%}
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-links">
+      <p><a href="https://github.com/Meta-Horizon-Start-Program"
+        target="_blank">GitHub</a> • <a
+        href="https://communityforums.atmeta.com/category/horizon-developer-forum"
+        target="_blank">Forums</a></p>
+    <a href="https://www.youtube.com/@metahorizonstart" target="_blank"
+      aria-label="Creator Programs YouTube Channel" style="color: #FF0000;">
+      <i class="fab fa-youtube"></i>
+    </a>
+    </div>
+  </footer>
+
+  <script src="{{ "/assets/js/docs-script.js?v=" | append: site.github.build_revision | relative_url }}"></script>
+
+</body>
+
+</html>
