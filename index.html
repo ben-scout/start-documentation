@@ -1,279 +1,601 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:image" content="images/start_OG_image.png" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <title>Meta Horizon Start Program Doc Hub</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <meta
+      name="google-site-verification"
+      content="IYNUxE7ACfkxRf8svoazGNeMFAc723_E2toHTr-E0g8"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta property="og:image" content="images/start_OG_image.png" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <title>Meta Horizon Start Program Doc Hub</title>
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <meta name="google-site-verification" content="IYNUxE7ACfkxRf8svoazGNeMFAc723_E2toHTr-E0g8" />
-</head>
+  <body data-theme="dark">
+    <header class="site-header">
+      <div class="left-nav">
+        <div class="logo">
+          <a href="#" id="logo-link">Meta Horizon Start Docs</a>
+        </div>
+        <nav class="nav-links">
+          <a href="docs/meta-horizon-docs/start-documents/" target="_blank"
+            >Start Program Docs</a
+          >
+          <a href="https://developers.meta.com/horizon/develop" target="_blank"
+            >Meta Developer Docs</a
+          >
+          <a
+            href="https://communityforums.atmeta.com/category/horizon-developer-forum"
+            target="_blank"
+            >Forums</a
+          >
+        </nav>
+      </div>
 
-<body data-theme="dark">
+      <div class="right-controls">
+        <a
+          href="https://www.youtube.com/@metahorizonstart"
+          target="_blank"
+          style="color: #ff0000"
+        >
+          <i class="fab fa-youtube"></i>
+        </a>
+        <button id="theme-toggle" aria-label="Toggle dark mode">🌙/☀️</button>
+        <div class="search-container">
+          <button
+            id="search-toggle"
+            aria-label="Toggle Search"
+            class="search-btn"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              aria-hidden="true"
+              focusable="false"
+              class="search-icon"
+            >
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+              />
+            </svg>
+          </button>
+          <input
+            type="search"
+            id="search-input"
+            placeholder="Search docs..."
+            aria-label="Search docs"
+          />
+          <ul id="search-suggestions" class="suggestions-list"></ul>
+        </div>
 
-  <header class="site-header">
-    <div class="left-nav">
-      <div class="logo"><a href="#" id="logo-link">Meta Horizon Start Docs</a></div>
-      <nav class="nav-links">
-        <a href="docs/meta-horizon-docs/start-documents/" target="_blank">Start Program Docs</a>
-        <a href="https://developers.meta.com/horizon/develop" target="_blank">Meta Developer Docs</a>
-        <a href="https://communityforums.atmeta.com/category/horizon-developer-forum"
-          target="_blank">Forums</a>
-      </nav>
-    </div>
-
-    <div class="right-controls">
-      <a href="https://www.youtube.com/@metahorizonstart" target="_blank" style="color: #FF0000;">
-        <i class="fab fa-youtube"></i>
-      </a>
-      <button id="theme-toggle" aria-label="Toggle dark mode">🌙/☀️</button>
-      <div class="search-container">
-        <button id="search-toggle" aria-label="Toggle Search" class="search-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"
-            class="search-icon">
+        <button
+          class="hamburger"
+          aria-label="Toggle navigation"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+            width="24"
+            height="24"
+            fill="currentColor"
+          >
             <path
-              d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+              d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"
+            />
           </svg>
         </button>
-        <input type="search" id="search-input" placeholder="Search docs..." aria-label="Search docs" />
-        <ul id="search-suggestions" class="suggestions-list"></ul>
       </div>
+    </header>
 
-      <button class="hamburger" aria-label="Toggle navigation" aria-hidden="true" focusable="false">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" height="24" fill="currentColor">
-          <path
-            d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" />
-        </svg>
-      </button>
-    </div>
-    </div>
-  </header>
-
-  <header class="hero">
-    <div class="container">
-      <h1 class="hero-title">Bring your ideas to life</h1>
-      <p class="hero-subheader">Shape the future of spatial computing on Meta Quest with groundbreaking mixed reality technologies to reinvent how people connect, work and play.</p>
-      <div class="hero-button">
-        <a href="#get-started">Get Started</a>
-      </div>
-
-    </div>
-  </header>
-
-  <h1 class="main-heading-featured">Featured Content</h1>
-  <section class="featured-articles">
-    <div class="container">
-      <div class="featured-grid">
-
- <div class="card searchable">
-          <h3>Build a Free-to-Play Multiplayer VR Game - Tiny Golf</h3>
-          <p>Tiny Golf is a multiplayer VR mini-golf game built in Unity as part of a three-part live tutorial series by Quentin Valembois (Valem). Over about 5 hours of development, the series demonstrates how to implement key free-to-play multiplayer features using the Meta Quest Platform SDK and Unity’s Netcode for GameObjects.</p>
-          <a
-            href="https://github.com/Meta-Horizon-Start-Program/Tiny-Golf">Read
-            More</a>
-        </div>
-
-        <div class="card searchable">
-          <h3>Attestation Workshop</h3>
-          <p>This repository contains a minimal, end‑to‑end example of Meta Quest's Attestation flow with a Unity client and a small Node/Express backend. It is meant as a starting point that you can harden for production.</p>
-          <a href="https://github.com/Meta-Horizon-Start-Program/AttestationWorkshop">Read More</a>
-        </div>
-     
-               <div class="card searchable">
-          <h3>Meta Horizon Docs</h3>
-          <ul>
-            <li><a href="docs/meta-horizon-docs/meta-quest-runtime-optimizer/">The New Meta Quest Runtime Optimizer Is Here</a></li>
-            <li><a href="docs/meta-horizon-docs/pca-api/">Unlock the New Passthrough Camera Access API</a></li>
-            <li><a href="docs/meta-horizon-docs/vr-hand-interactions-isdk/">VR Hand Interactions &amp; Inputs from ISDK (Unity &amp; Unreal) Meta Quest Developer Deep Dive</a></li>
-             </ul>
-        </div>
-
-        <div class="card searchable">
-          <h3>Mentor Series</h3>
-          <ul>
-            <li><a href="docs/mentor-series/free-to-play-valem-pt1/">Build the Essentials of a Free-to-Play App Part 1
-              </a></li>
-            <li><a href="docs/mentor-series/free-to-play-valem-pt2/">Build the Essentials of a Free-to-Play App Part 2</a></li>
-            <li><a href="docs/mentor-series/free-to-play-valem-pt3/">Build the Essentials of a Free-to-Play App Part 3</a>
-            </li>
-            <li><a href="docs/mentor-series/f2p-vr-strategy/">Build a Winning Free-to-Play Strategy for VR Mentor Workshop</a></li>
-          </ul>
-        </div>
-        <div class="card searchable">
-          <h3>Android Apps</h3>
-          <ul>
-            <li><a href="docs/android-apps/design-2d-apps-for-quest/">How to design 2D apps for Meta Quest</a></li>
-            <li><a
-                href="docs/android-apps/mixed-reality-android-app/">Bring your Android app into mixed reality</a></li>
-            <li><a href="docs/android-apps/port-android-apps-to-quest/">Getting started with 2D apps on Meta Quest</a>
-            </li>
-      
-          </ul>
-        </div>
-
-        <div class="card searchable">
-          <h3>Meta Horizon Go-to-Market Academy</h3>
-          <ul>
-            <li><a href="docs/meta-horizon-go-to-market-academy/community-building-for-growth/">Community Building for Growth</a></li>
-            <li><a
-                href="docs/meta-horizon-go-to-market-academy/game-marketing-asset-creation.md">Game Marketing Asset Creation</a></li>
-            <li><a href="docs/meta-horizon-go-to-market-academy/game-marketing-strategy.md">Game Marketing Strategy</a>
-            </li>
-            <li><a href="docs/meta-horizon-go-to-market-academy/how-to-build-buzz.md">How to Build Buzz: Nail Your PR Story </a>
-            </li>
-            <li><a href="docs/meta-horizon-go-to-market-academy/influencer-marketing-tactics.md">Influencer Marketing Tactics for Games</a>
-            </li>
-            <li><a href="docs/meta-horizon-go-to-market-academy/social-media-101.md">Social Media 101 for Game Dev</a>
-            </li>
-      
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-<section class="video-section">
-    <div class="container center">
-      <p class="small-header">Latest Videos</p>
-      <iframe src="https://www.youtube.com/embed?listType=playlist&list=PLQp31hPJdYe9jV5vMaueGsSrs-duM8Rh9" loading="lazy"
-        allowfullscreen class="youtube-embed-homepage"></iframe>
-      </iframe>
-      <iframe src="https://www.youtube.com/embed?listType=playlist&list=PLQp31hPJdYe9jV5vMaueGsSrs-duM8Rh9&index=2" loading="lazy"
-        allowfullscreen class="youtube-embed-homepage">
-      </iframe>
-      <iframe src="https://www.youtube.com/embed?listType=playlist&list=PLQp31hPJdYe9jV5vMaueGsSrs-duM8Rh9&index=3" loading="lazy"
-        allowfullscreen class="youtube-embed-homepage">
-      </iframe>
-      <iframe src="https://www.youtube.com/embed?listType=playlist&list=PLQp31hPJdYe9jV5vMaueGsSrs-duM8Rh9&index=4" loading="lazy"
-        allowfullscreen class="youtube-embed-homepage">
-      </iframe>
-    </div>
-  </section>
-  <section id="get-started" class="get-started">
-    <div class="container">
-      <div class="get-started-text">
-        <h2>Get Started with Build Paths</h2>
-        <p>Successfully build, test, iterate, and publish your mixed reality app with the right technology.
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero-title">Bring your ideas to life</h1>
+        <p class="hero-subheader">
+          Shape the future of spatial computing on Meta Quest with
+          groundbreaking mixed reality technologies to reinvent how people
+          connect, work and play.
         </p>
-        <a href="https://developers.meta.com/horizon/develop/" target="_blank" class="button">Meta Developer Documentation</a>
+        <div class="hero-button">
+          <a href="#get-started">Get Started</a>
+        </div>
       </div>
-      <div class="get-started-grid">
-        <div class="card searchable">
-          <a href="https://developers.meta.com/horizon/develop/unity/"><h3>Unity</h3></a>
-          <p>Unleash the power of mixed reality with Unity's versatile and intuitive 3D engine, creating immersive experiences that blur the lines between real and virtual worlds.</p>
-          <ul>
-            <li><a
-                href="https://developers.meta.com/horizon/documentation/unity/unity-tutorial-hello-vr">Hello World VR</a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/unity/unity-development-overview">Developing Apps for Horizon OS in Unity</a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/unity/unity-project-setup">Unity Project Setup</a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/unity/bb-overview">Explore Features with Building Blocks</a>
-            </li>
-            <li><a href="https://developers.meta.com/horizon/documentation/unity/unity-sdks-overview">Meta SDKs for Unity</a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/unity/unity-samples-overview">Sample Projects Overview</a></li>
-          </ul>
+    </header>
+
+    <h1 class="main-heading-featured">Featured Content</h1>
+    <section class="featured-articles">
+      <div class="container">
+        <div class="featured-grid">
+          <div class="card searchable">
+            <h3>Build a Free-to-Play Multiplayer VR Game - Tiny Golf</h3>
+            <p>
+              Tiny Golf is a multiplayer VR mini-golf game built in Unity as
+              part of a three-part live tutorial series by Quentin Valembois
+              (Valem). Over about 5 hours of development, the series
+              demonstrates how to implement key free-to-play multiplayer
+              features using the Meta Quest Platform SDK and Unity’s Netcode for
+              GameObjects.
+            </p>
+            <a href="https://github.com/Meta-Horizon-Start-Program/Tiny-Golf"
+              >Read More</a
+            >
+          </div>
+
+          <div class="card searchable">
+            <h3>Attestation Workshop</h3>
+            <p>
+              This repository contains a minimal, end‑to‑end example of Meta
+              Quest's Attestation flow with a Unity client and a small
+              Node/Express backend. It is meant as a starting point that you can
+              harden for production.
+            </p>
+            <a
+              href="https://github.com/Meta-Horizon-Start-Program/AttestationWorkshop"
+              >Read More</a
+            >
+          </div>
+
+          <div class="card searchable">
+            <h3>Meta Horizon Docs</h3>
+            <ul>
+              <li>
+                <a href="docs/meta-horizon-docs/meta-quest-runtime-optimizer/"
+                  >The New Meta Quest Runtime Optimizer Is Here</a
+                >
+              </li>
+              <li>
+                <a href="docs/meta-horizon-docs/pca-api/"
+                  >Unlock the New Passthrough Camera Access API</a
+                >
+              </li>
+              <li>
+                <a href="docs/meta-horizon-docs/vr-hand-interactions-isdk/"
+                  >VR Hand Interactions &amp; Inputs from ISDK (Unity &amp;
+                  Unreal) Meta Quest Developer Deep Dive</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="card searchable">
+            <h3>Mentor Series</h3>
+            <ul>
+              <li>
+                <a href="docs/mentor-series/free-to-play-valem-pt1/"
+                  >Build the Essentials of a Free-to-Play App Part 1
+                </a>
+              </li>
+              <li>
+                <a href="docs/mentor-series/free-to-play-valem-pt2/"
+                  >Build the Essentials of a Free-to-Play App Part 2</a
+                >
+              </li>
+              <li>
+                <a href="docs/mentor-series/free-to-play-valem-pt3/"
+                  >Build the Essentials of a Free-to-Play App Part 3</a
+                >
+              </li>
+              <li>
+                <a href="docs/mentor-series/f2p-vr-strategy/"
+                  >Build a Winning Free-to-Play Strategy for VR Mentor
+                  Workshop</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="card searchable">
+            <h3>Android Apps</h3>
+            <ul>
+              <li>
+                <a href="docs/android-apps/design-2d-apps-for-quest/"
+                  >How to design 2D apps for Meta Quest</a
+                >
+              </li>
+              <li>
+                <a href="docs/android-apps/mixed-reality-android-app/"
+                  >Bring your Android app into mixed reality</a
+                >
+              </li>
+              <li>
+                <a href="docs/android-apps/port-android-apps-to-quest/"
+                  >Getting started with 2D apps on Meta Quest</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="card searchable">
+            <h3>Meta Horizon Go-to-Market Academy</h3>
+            <ul>
+              <li>
+                <a
+                  href="docs/meta-horizon-go-to-market-academy/community-building-for-growth/"
+                  >Community Building for Growth</a
+                >
+              </li>
+              <li>
+                <a
+                  href="docs/meta-horizon-go-to-market-academy/game-marketing-asset-creation.md"
+                  >Game Marketing Asset Creation</a
+                >
+              </li>
+              <li>
+                <a
+                  href="docs/meta-horizon-go-to-market-academy/game-marketing-strategy.md"
+                  >Game Marketing Strategy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="docs/meta-horizon-go-to-market-academy/how-to-build-buzz.md"
+                  >How to Build Buzz: Nail Your PR Story
+                </a>
+              </li>
+              <li>
+                <a
+                  href="docs/meta-horizon-go-to-market-academy/influencer-marketing-tactics.md"
+                  >Influencer Marketing Tactics for Games</a
+                >
+              </li>
+              <li>
+                <a
+                  href="docs/meta-horizon-go-to-market-academy/social-media-101.md"
+                  >Social Media 101 for Game Dev</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="card searchable">
-          <a href="https://developers.meta.com/horizon/develop/unreal/"><h3>Unreal Engine</h3></a>
-          <p>Realize your creativity and build breathtaking worlds with Unreal Engine's cutting-edge tools and real-time collaboration features.</p>
-          <ul>
-            <li><a href="https://developers.meta.com/horizon/documentation/unreal/unreal-quick-start-setup-dev-environ">Setting Up Your Dev Environment</a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/unreal/unreal-quick-start-install-unreal-engine">Installing Unreal Engine</a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/unreal/unreal-create-and-configure-new-project">Setting Up Your First Project</a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/unreal/unreal-packaging-and-preparing-your-new-project">Packaging and Preparing Your New Project</a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/unreal/unreal-compatibility-matrix">Choosing UE Installation by Feature Compatibility</a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/unreal/unreal-samples">Unreal Samples and Showcases
- </a></li>
-          </ul>
-        </div>
-        <div class="card searchable">
-          <a href="https://developers.meta.com/horizon/develop/native/"><h3>Native and OpenXR</h3></a>
-          <p>OpenXR enables developers to create high-performance, custom XR experiences on Meta Quest, unlocking new possibilities for immersive and interactive content.</p>
-          <ul>
-            <li><a href="https://developers.meta.com/horizon/documentation/native/android/mobile-intro">Overview of Native development</a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/native/android/mobile-reqs">Set up your
-                environment</a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/native/android/mobile-openxr">OpenXR support
-                for Meta Quest</a></li>
-            
-          </ul>
-        </div>
-        <div class="card searchable">
-          <a href="https://developers.meta.com/horizon/develop/spatial-sdk/"><h3>Meta Spatial SDK</h3></a>
-          <p>Elevate your apps with Meta Spatial SDK, a native Android framework that seamlessly blends physical and digital worlds for an unparalleled spatial experience.</p>
-          <ul>
-            <li><a href="https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-explainer">What Is Spatial SDK? </a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-editor-create-app-content">Build Your First App</a>
-            </li>
-            <li><a
-                href="https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-architecture/">Architecture</a></li>
-            <li><a
-                href="https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-ecs/">Entity-Component-System </a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-android-studio-plugin">Android Studio Plugin</a></li>
-          </ul>
-        </div>
-        <div class="card searchable">
-          <a href="https://developers.meta.com/horizon/develop/android-apps/"><h3>Android Apps</h3></a>
-          <p>Make your existing Android app compatible and differentiate it using unique Meta Horizon OS features to give your users an innovative spatial experience.</p>
-          <ul>
-            <li><a href="https://developers.meta.com/horizon/documentation/android-apps/horizon-os-apps">Android Apps on Meta Horizon OS</a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/android-apps/getting-started-overview">Getting started</a>
-            </li>
-            <li><a
-                href="https://developers.meta.com/horizon/documentation/android-apps/meta-horizon-android-studio-plugin">Android Studio Plugin</a></li>
-            <li><a
-                href="https://developers.meta.com/horizon/documentation/android-apps/making-apps-compatible-overview">Make Your App Compatible</a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/android-apps/media-requirements">Media Requirements</a></li>
-          </ul>
-        </div>
-        <div class="card searchable">
-          <a href="https://developers.meta.com/horizon/develop/web/"><h3>Web</h3></a>
-          <p>Bring your existing website to Horizon OS, optimized for VR devices, accessible through our built-in browser.</p>
-          <ul>
-            <li><a href="https://developers.meta.com/horizon/documentation/web/webxr-first-steps">WebXR First Steps</a></li>
-            <li><a href="https://developers.meta.com/horizon/documentation/web/webxr-workflow">Developer Workflow</a>
-            </li>
-            <li><a
-                href="https://developers.meta.com/horizon/documentation/web">Introduction to Browser</a></li>
-            <li><a
-                href="https://developers.meta.com/horizon/documentation/web/pwa-overview">Progressive Web Apps</a></li>
-            
-          </ul>
-        </div>
-        
       </div>
-    </div>
-  </section>
+    </section>
+    <section class="video-section">
+      <div class="container center">
+        <p class="small-header">Latest Videos</p>
+        <iframe
+          src="https://www.youtube.com/embed?listType=playlist&list=PLQp31hPJdYe9jV5vMaueGsSrs-duM8Rh9"
+          loading="lazy"
+          allowfullscreen
+          class="youtube-embed-homepage"
+        ></iframe>
 
-  <section id="community" class="community">
-    <div class="container">
-      <h1 class="main-heading">Join the Meta Horizon Start Program</h1>
-    </div>
-    <p class="subheading">Join Meta's premier developer program to access a thriving VR community, hands-on support, and exclusive development resources to grow your app. Start members get exclusive access to a curated community of VR developers, expert technical support, and development resources.
+        <iframe
+          src="https://www.youtube.com/embed?listType=playlist&list=PLQp31hPJdYe9jV5vMaueGsSrs-duM8Rh9&index=2"
+          loading="lazy"
+          allowfullscreen
+          class="youtube-embed-homepage"
+        >
+        </iframe>
+        <iframe
+          src="https://www.youtube.com/embed?listType=playlist&list=PLQp31hPJdYe9jV5vMaueGsSrs-duM8Rh9&index=3"
+          loading="lazy"
+          allowfullscreen
+          class="youtube-embed-homepage"
+        >
+        </iframe>
+        <iframe
+          src="https://www.youtube.com/embed?listType=playlist&list=PLQp31hPJdYe9jV5vMaueGsSrs-duM8Rh9&index=4"
+          loading="lazy"
+          allowfullscreen
+          class="youtube-embed-homepage"
+        >
+        </iframe>
+      </div>
+    </section>
+    <section id="get-started" class="get-started">
+      <div class="container">
+        <div class="get-started-text">
+          <h2>Get Started with Build Paths</h2>
+          <p>
+            Successfully build, test, iterate, and publish your mixed reality
+            app with the right technology.
+          </p>
+          <a
+            href="https://developers.meta.com/horizon/develop/"
+            target="_blank"
+            class="button"
+            >Meta Developer Documentation</a
+          >
+        </div>
+        <div class="get-started-grid">
+          <div class="card searchable">
+            <a href="https://developers.meta.com/horizon/develop/unity/"
+              ><h3>Unity</h3></a
+            >
+            <p>
+              Unleash the power of mixed reality with Unity's versatile and
+              intuitive 3D engine, creating immersive experiences that blur the
+              lines between real and virtual worlds.
+            </p>
+            <ul>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/unity/unity-tutorial-hello-vr"
+                  >Hello World VR</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/unity/unity-development-overview"
+                  >Developing Apps for Horizon OS in Unity</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/unity/unity-project-setup"
+                  >Unity Project Setup</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/unity/bb-overview"
+                  >Explore Features with Building Blocks</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/unity/unity-sdks-overview"
+                  >Meta SDKs for Unity</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/unity/unity-samples-overview"
+                  >Sample Projects Overview</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="card searchable">
+            <a href="https://developers.meta.com/horizon/develop/unreal/"
+              ><h3>Unreal Engine</h3></a
+            >
+            <p>
+              Realize your creativity and build breathtaking worlds with Unreal
+              Engine's cutting-edge tools and real-time collaboration features.
+            </p>
+            <ul>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/unreal/unreal-quick-start-setup-dev-environ"
+                  >Setting Up Your Dev Environment</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/unreal/unreal-quick-start-install-unreal-engine"
+                  >Installing Unreal Engine</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/unreal/unreal-create-and-configure-new-project"
+                  >Setting Up Your First Project</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/unreal/unreal-packaging-and-preparing-your-new-project"
+                  >Packaging and Preparing Your New Project</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/unreal/unreal-compatibility-matrix"
+                  >Choosing UE Installation by Feature Compatibility</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/unreal/unreal-samples"
+                  >Unreal Samples and Showcases
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="card searchable">
+            <a href="https://developers.meta.com/horizon/develop/native/"
+              ><h3>Native and OpenXR</h3></a
+            >
+            <p>
+              OpenXR enables developers to create high-performance, custom XR
+              experiences on Meta Quest, unlocking new possibilities for
+              immersive and interactive content.
+            </p>
+            <ul>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/native/android/mobile-intro"
+                  >Overview of Native development</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/native/android/mobile-reqs"
+                  >Set up your environment</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/native/android/mobile-openxr"
+                  >OpenXR support for Meta Quest</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="card searchable">
+            <a href="https://developers.meta.com/horizon/develop/spatial-sdk/"
+              ><h3>Meta Spatial SDK</h3></a
+            >
+            <p>
+              Elevate your apps with Meta Spatial SDK, a native Android
+              framework that seamlessly blends physical and digital worlds for
+              an unparalleled spatial experience.
+            </p>
+            <ul>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-explainer"
+                  >What Is Spatial SDK?
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-editor-create-app-content"
+                  >Build Your First App</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-architecture/"
+                  >Architecture</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-ecs/"
+                  >Entity-Component-System
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-android-studio-plugin"
+                  >Android Studio Plugin</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="card searchable">
+            <a href="https://developers.meta.com/horizon/develop/android-apps/"
+              ><h3>Android Apps</h3></a
+            >
+            <p>
+              Make your existing Android app compatible and differentiate it
+              using unique Meta Horizon OS features to give your users an
+              innovative spatial experience.
+            </p>
+            <ul>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/android-apps/horizon-os-apps"
+                  >Android Apps on Meta Horizon OS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/android-apps/getting-started-overview"
+                  >Getting started</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/android-apps/meta-horizon-android-studio-plugin"
+                  >Android Studio Plugin</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/android-apps/making-apps-compatible-overview"
+                  >Make Your App Compatible</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/android-apps/media-requirements"
+                  >Media Requirements</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="card searchable">
+            <a href="https://developers.meta.com/horizon/develop/web/"
+              ><h3>Web</h3></a
+            >
+            <p>
+              Bring your existing website to Horizon OS, optimized for VR
+              devices, accessible through our built-in browser.
+            </p>
+            <ul>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/web/webxr-first-steps"
+                  >WebXR First Steps</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/web/webxr-workflow"
+                  >Developer Workflow</a
+                >
+              </li>
+              <li>
+                <a href="https://developers.meta.com/horizon/documentation/web"
+                  >Introduction to Browser</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/documentation/web/pwa-overview"
+                  >Progressive Web Apps</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</p>
-    <div class="center-button">
-      <a href="https://developers.meta.com/horizon/discover/programs/start/" class="button" target="_blank">Learn more</a>
-    </div>
-  </section>
+    <section id="community" class="community">
+      <div class="container">
+        <h1 class="main-heading">Join the Meta Horizon Start Program</h1>
+      </div>
+      <p class="subheading">
+        Join Meta's premier developer program to access a thriving VR community,
+        hands-on support, and exclusive development resources to grow your app.
+        Start members get exclusive access to a curated community of VR
+        developers, expert technical support, and development resources.
+      </p>
+      <div class="center-button">
+        <a
+          href="https://developers.meta.com/horizon/discover/programs/start/"
+          class="button"
+          target="_blank"
+          >Learn more</a
+        >
+      </div>
+    </section>
 
-  <footer class="site-footer">
-    <p><a href="https://github.com/Meta-Horizon-Start-Program"
-        target="_blank">GitHub</a> • <a
-        href="https://communityforums.atmeta.com/category/horizon-developer-forum"
-        target="_blank">Forums</a></p>
-    <a href="https://www.youtube.com/@metahorizonstart" target="_blank"
-      aria-label="Creator Programs YouTube Channel" style="color: #FF0000;">
-      <i class="fab fa-youtube"></i>
-    </a>
-  </footer>
+    <footer class="site-footer">
+      <p>
+        <a href="https://github.com/Meta-Horizon-Start-Program" target="_blank"
+          >GitHub</a
+        >
+        •
+        <a
+          href="https://communityforums.atmeta.com/category/horizon-developer-forum"
+          target="_blank"
+          >Forums</a
+        >
+      </p>
+      <a
+        href="https://www.youtube.com/@metahorizonstart"
+        target="_blank"
+        aria-label="Creator Programs YouTube Channel"
+        style="color: #ff0000"
+      >
+        <i class="fab fa-youtube"></i>
+      </a>
+    </footer>
 
-  <script src="main.js"></script>
-
-</body>
-
+    <script src="main.js"></script>
+  </body>
 </html>
