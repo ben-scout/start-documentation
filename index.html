@@ -18,16 +18,23 @@
       name="google-site-verification"
       content="IYNUxE7ACfkxRf8svoazGNeMFAc723_E2toHTr-E0g8"
     />
+    <style>
+      #start-summit {
+        width: 560px;
+        height: 318px;
+        max-width: 100%;
+      }
+    </style>
   </head>
 
   <body data-theme="dark">
     <header class="site-header">
       <div class="left-nav">
         <div class="logo">
-          <a href="#" id="logo-link">Meta Horizon Start Docs</a>
+          <a href="#" id="logo-link">Meta Horizon Start</a>
         </div>
         <nav class="nav-links">
-          <a href="docs/meta-horizon-docs/start-documents/" target="_blank"
+          <a href="docs/let's-learn-series/start-documents/" target="_blank"
             >Start Program Docs</a
           >
           <a href="https://developers.meta.com/horizon/develop" target="_blank"
@@ -110,29 +117,65 @@
           <a href="#get-started">Get Started</a>
         </div>
       </div>
-    </header>
-
-    <h1 class="main-heading-featured">Featured Content</h1>
+    <h1 class="main-heading-featured" style="display: none;">Featured Content</h1>
     <section class="featured-articles">
       <div class="container">
         <div class="featured-grid">
           <div class="card searchable">
-            <h3>Build a Free-to-Play Multiplayer VR Game - Tiny Golf</h3>
-            <p>
-              Tiny Golf is a multiplayer VR mini-golf game built in Unity as
-              part of a three-part live tutorial series by Quentin Valembois
-              (Valem). Over about 5 hours of development, the series
-              demonstrates how to implement key free-to-play multiplayer
-              features using the Meta Quest Platform SDK and Unity’s Netcode for
-              GameObjects.
-            </p>
-            <a href="https://github.com/Meta-Horizon-Start-Program/Tiny-Golf"
-              >Read More</a
-            >
+            <h3>Free-to-Play Multiplayer & Social VR Essentials</h3>
+            <h4>
+              Let's Build a F2P Multiplayer VR Game (<a
+                style="font-size: unset; font-weight: unset"
+                href="https://github.com/Meta-Horizon-Start-Program/Tiny-Golf"
+                >Tiny Golf</a
+              >) - Build-Along Series
+            </h4>
+            <ul>
+              <li>
+                <a href="docs/mentor-workshops/free-to-play-valem-pt1/"
+                  >Part 1: Multiplayer Foundation
+                </a>
+              </li>
+              <li>
+                <a href="docs/mentor-workshops/free-to-play-valem-pt2/"
+                  >Part 2: Gameplay Networking
+                </a>
+              </li>
+              <li>
+                <a href="docs/mentor-workshops/free-to-play-valem-pt3/"
+                  >Part 3: Meta Platform Features
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/Meta-Horizon-Start-Program/Tiny-Golf/blob/main/F2P%20Multiplayer%20Part%201-2-3.pdf"
+                  >Slides (PDF): F2P Multiplayer Part 1-2-3.pdf
+                </a>
+              </li>
+            </ul>
+            <h4>Free-To-Play Academy</h4>
+            <ul>
+              <li>Acquisition</li>
+              <li>Retention</li>
+              <li>Monetization</li>
+              <li>
+                <a
+                  href="https://developers.meta.com/horizon/discover/success-stories/animal-company-wooster-games/"
+                  >Interview with Animal Company</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://ben-scout.github.io/start-documentation/docs/mentor-workshops/f2p-vr-strategy/"
+                  >Build a Winning Free-to-Play Strategy for VR Mentor
+                  Workshop</a
+                >
+              </li>
+            </ul>
           </div>
 
           <div class="card searchable">
-            <h3>Attestation Workshop</h3>
+            <h3>App Security Essentials - Attestation API</h3>
             <p>
               This repository contains a minimal, end‑to‑end example of Meta
               Quest's Attestation flow with a Unity client and a small
@@ -140,57 +183,41 @@
               harden for production.
             </p>
             <a
+              class="arrow"
               href="https://github.com/Meta-Horizon-Start-Program/AttestationWorkshop"
-              >Read More</a
+              >View repository</a
             >
           </div>
 
           <div class="card searchable">
-            <h3>Meta Horizon Docs</h3>
+            <h3>Let’s Learn Series</h3>
+            <p>Meta-led sessions covering new tools & products.</p>
             <ul>
               <li>
-                <a href="docs/meta-horizon-docs/meta-quest-runtime-optimizer/"
-                  >The New Meta Quest Runtime Optimizer Is Here</a
-                >
+                <a href="docs/let's-learn-series/meta-quest-runtime-optimizer/"
+                  >Meta Quest Runtime Optimizer
+                </a>
               </li>
               <li>
-                <a href="docs/meta-horizon-docs/pca-api/"
-                  >Unlock the New Passthrough Camera Access API</a
-                >
+                <a href="docs/let's-learn-series/pca-api/"
+                  >Passthrough Camera Access API
+                </a>
               </li>
               <li>
-                <a href="docs/meta-horizon-docs/vr-hand-interactions-isdk/"
-                  >VR Hand Interactions &amp; Inputs from ISDK (Unity &amp;
-                  Unreal) Meta Quest Developer Deep Dive</a
-                >
+                <a href="docs/let's-learn-series/vr-hand-interactions-isdk/"
+                  >Hands & Microgestures from (Interaction SDK)
+                </a>
               </li>
             </ul>
           </div>
 
           <div class="card searchable">
-            <h3>Mentor Series</h3>
+            <h3>Mentor Workshop Recordings</h3>
             <ul>
-              <li>
-                <a href="docs/mentor-series/free-to-play-valem-pt1/"
-                  >Build the Essentials of a Free-to-Play App Part 1
-                </a>
-              </li>
-              <li>
-                <a href="docs/mentor-series/free-to-play-valem-pt2/"
-                  >Build the Essentials of a Free-to-Play App Part 2</a
-                >
-              </li>
-              <li>
-                <a href="docs/mentor-series/free-to-play-valem-pt3/"
-                  >Build the Essentials of a Free-to-Play App Part 3</a
-                >
-              </li>
-              <li>
-                <a href="docs/mentor-series/f2p-vr-strategy/"
-                  >Build a Winning Free-to-Play Strategy for VR Mentor
-                  Workshop</a
-                >
-              </li>
+              <li>App Security and Attestation API</li>
+              <li>Intro to Optimization in Unity</li>
+              <li>Passthrough Camera Access API (PCA)</li>
+              <li>Diegetic User Interfaces in Virtual Environments</li>
             </ul>
           </div>
           <div class="card searchable">
@@ -258,39 +285,8 @@
         </div>
       </div>
     </section>
-    <section class="video-section">
-      <div class="container center">
-        <p class="small-header">Latest Videos</p>
-        <iframe
-          src="https://www.youtube.com/embed?listType=playlist&list=PLQp31hPJdYe9jV5vMaueGsSrs-duM8Rh9"
-          loading="lazy"
-          allowfullscreen
-          class="youtube-embed-homepage"
-        ></iframe>
+   </header>
 
-        <iframe
-          src="https://www.youtube.com/embed?listType=playlist&list=PLQp31hPJdYe9jV5vMaueGsSrs-duM8Rh9&index=2"
-          loading="lazy"
-          allowfullscreen
-          class="youtube-embed-homepage"
-        >
-        </iframe>
-        <iframe
-          src="https://www.youtube.com/embed?listType=playlist&list=PLQp31hPJdYe9jV5vMaueGsSrs-duM8Rh9&index=3"
-          loading="lazy"
-          allowfullscreen
-          class="youtube-embed-homepage"
-        >
-        </iframe>
-        <iframe
-          src="https://www.youtube.com/embed?listType=playlist&list=PLQp31hPJdYe9jV5vMaueGsSrs-duM8Rh9&index=4"
-          loading="lazy"
-          allowfullscreen
-          class="youtube-embed-homepage"
-        >
-        </iframe>
-      </div>
-    </section>
     <section id="get-started" class="get-started">
       <div class="container">
         <div class="get-started-text">
@@ -518,7 +514,7 @@
           </div>
           <div class="card searchable">
             <a href="https://developers.meta.com/horizon/develop/web/"
-              ><h3>Web</h3></a
+              ><h3>WebXR</h3></a
             >
             <p>
               Bring your existing website to Horizon OS, optimized for VR
@@ -553,7 +549,31 @@
         </div>
       </div>
     </section>
-
+    <section class="video-section">
+      <div class="container center">
+        
+        <div
+          style="
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 560px;
+          "
+        >
+        <a
+                href="https://www.youtube.com/@metahorizonstart?sub_confirmation=1"
+                >
+          <video autoplay muted loop id="start-summit">
+            <source src="assets/video/sizzle.webm" type="video/webm" />
+          </video>
+          <div class="video-text">
+            <h1>Meta Horizon Start YouTube Playlist
+            </h1>
+          </a>
+          </div>
+        </div>
+      </div>
+    </section>
     <section id="community" class="community">
       <div class="container">
         <h1 class="main-heading">Join the Meta Horizon Start Program</h1>

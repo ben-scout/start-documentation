@@ -23,15 +23,15 @@
     <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
     <div class="header-row">
       <div class="left-nav">
-        <button class="hamburger" id="menu-toggle">☰</button>
-        <div class="logo"><a href="/start-documentation/" id="logo-link">Meta Horizon Start Docs</a></div>
-        <div class="mobile-title mobile-only"><a href="/start-documentation/">Meta Horizon Start Docs</a></div>
+              <div class="logo"><a href="/start-documentation/" id="logo-link">Meta Horizon Start</a></div>
+        <div class="mobile-title mobile-only"><a href="/start-documentation/">Meta Horizon Start</a></div>
         <nav class="nav-links">
-           <a href="/start-documentation/docs/meta-horizon-docs/start-documents/" target="_blank">Start Program Docs</a>
+           <a href="/start-documentation/docs/let's-learn-series/start-documents/" target="_blank">Start Program Docs</a>
         <a href="https://developers.meta.com/horizon/develop" target="_blank">Meta Developer Docs</a>
         <a href="https://communityforums.atmeta.com/category/horizon-developer-forum"
           target="_blank">Forums</a>
         </nav>
+        <button class="hamburger" id="menu-toggle">☰</button>
       </div>
       <div class="right-controls">
         <a href="https://www.youtube.com/@metahorizonstart" target="_blank" style="color: #FF0000;">
@@ -60,51 +60,129 @@
       {% endif %}
       {% endfor %}
 
+      <!-- Define Build Paths folders -->
+      {% assign build_paths_folders = "unity-development,unreal-engine,native-and-open-xr,spatial-sdk,android-apps,webxr" | split: "," %}
+
+      <!-- Define folder display names -->
+      {% assign folder_display_names = "let's-learn-series:Let's Learn series,spatial-sdk:Spatial SDK,unreal-engine:Unreal Engine,webxr:WebXR,native-and-open-xr:Native & OpenXR,meta-spatial-sdk:Meta Spatial SDK,meta-horizon-go-to-market-academy:Meta Horizon Go-to-Market Academy" | split: "," %}
+      {% assign folder_name_map = "" | split: "" %}
+      {% for item in folder_display_names %}
+        {% assign pair = item | split: ":" %}
+        {% assign folder_name_map = folder_name_map | push: pair %}
+      {% endfor %}
+
       <ul id="doc-list">
-
+        <!-- Start Programming Section -->
+        <li class="section-header">Start Programming</li>
         {% for folder in folder_list %}
-
-        {% assign folder_docs = all_docs_pages | where_exp: "doc", "doc.path contains folder" %}
-
-        {% assign folder_is_open = false %}
-        {% for doc in folder_docs %}
-        {% if doc.url == page.url %}
-        {% assign folder_is_open = true %}
-        {% break %}
-        {% endif %}
-        {% endfor %}
-
-        <li>
-          <div class="folder-toggle{% if folder_is_open %} open{% endif %}" role="button" tabindex="0">
-            <span class="folder-name">{{ folder | replace: '-', ' ' | capitalize }}</span>
-            <svg class="chevron-icon" width="12" height="12" viewBox="0 0 320 512" fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z">
-              </path>
-            </svg>
-          </div>
-          <ul class="dropdown{% if folder_is_open %} open{% endif %}">
+          {% unless build_paths_folders contains folder %}
+            {% assign folder_docs = all_docs_pages | where_exp: "doc", "doc.path contains folder" %}
+            {% assign folder_is_open = false %}
             {% for doc in folder_docs %}
-
-            {% assign parts = doc.path %}
-            {% assign item = parts[2] | replace: '.md', '' %}
-            {% if item %}
-            <li>
-              <a href="{{ doc.url | relative_url }}" {% if doc.url==page.url %} class="active" {% endif %}>
-                {{ item }}
-                {{doc.title}}
-              </a>
-            </li>
+            {% if doc.url == page.url %}
+            {% assign folder_is_open = true %}
+            {% break %}
             {% endif %}
             {% endfor %}
-          </ul>
-        </li>
+
+            <li>
+              <div class="folder-toggle{% if folder_is_open %} open{% endif %}" role="button" tabindex="0">
+                <span class="folder-name">
+                  {% assign display_name = folder %}
+                  {% for pair in folder_name_map %}
+                    {% if pair[0] == folder %}
+                      {% assign display_name = pair[1] %}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+                  {% if display_name == folder %}
+                    {{ display_name | replace: '-', ' ' | capitalize }}
+                  {% else %}
+                    {{ display_name }}
+                  {% endif %}
+                </span>
+                <svg class="chevron-icon" width="12" height="12" viewBox="0 0 320 512" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z">
+                  </path>
+                </svg>
+              </div>
+              <ul class="dropdown{% if folder_is_open %} open{% endif %}">
+                {% for doc in folder_docs %}
+                {% assign parts = doc.path %}
+                {% assign item = parts[2] | replace: '.md', '' %}
+                {% if item %}
+                <li>
+                  <a href="{{ doc.url | relative_url }}" {% if doc.url==page.url %} class="active" {% endif %}>
+                    {{ item }}
+                    {{doc.title}}
+                  </a>
+                </li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </li>
+          {% endunless %}
+        {% endfor %}
+
+        <!-- Build Paths Section -->
+        <li class="section-header">Build Paths</li>
+        {% for folder in folder_list %}
+          {% if build_paths_folders contains folder %}
+            {% assign folder_docs = all_docs_pages | where_exp: "doc", "doc.path contains folder" %}
+            {% assign folder_is_open = false %}
+            {% for doc in folder_docs %}
+            {% if doc.url == page.url %}
+            {% assign folder_is_open = true %}
+            {% break %}
+            {% endif %}
+            {% endfor %}
+
+            <li>
+              <div class="folder-toggle{% if folder_is_open %} open{% endif %}" role="button" tabindex="0">
+                <span class="folder-name">
+                  {% assign display_name = folder %}
+                  {% for pair in folder_name_map %}
+                    {% if pair[0] == folder %}
+                      {% assign display_name = pair[1] %}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+                  {% if display_name == folder %}
+                    {{ display_name | replace: '-', ' ' | capitalize }}
+                  {% else %}
+                    {{ display_name }}
+                  {% endif %}
+                </span>
+                <svg class="chevron-icon" width="12" height="12" viewBox="0 0 320 512" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z">
+                  </path>
+                </svg>
+              </div>
+              <ul class="dropdown{% if folder_is_open %} open{% endif %}">
+                {% for doc in folder_docs %}
+                {% assign parts = doc.path %}
+                {% assign item = parts[2] | replace: '.md', '' %}
+                {% if item %}
+                <li>
+                  <a href="{{ doc.url | relative_url }}" {% if doc.url==page.url %} class="active" {% endif %}>
+                    {{ item }}
+                    {{doc.title}}
+                  </a>
+                </li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </li>
+          {% endif %}
         {% endfor %}
       </ul>
       <hr class="mobile-sidebar-divider mobile-only" />
       <div class="mobile-sidebar-nav mobile-only">
-         <a href="/start-documentation/docs/meta-horizon-docs/start-documents/" target="_blank">Start Program Docs</a>
+         <a href="/start-documentation/docs/let's-learn-series/start-documents/" target="_blank">Start Program Docs</a>
         <a href="https://developers.meta.com/horizon/develop" target="_blank">Meta Developer Docs</a>
         <a href="https://communityforums.atmeta.com/category/horizon-developer-forum"
           target="_blank">Forums</a>

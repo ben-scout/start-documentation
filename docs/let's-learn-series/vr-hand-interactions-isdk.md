@@ -1,4 +1,4 @@
-# VR Hand Interactions & Inputs from ISDK (Unity & Unreal) | Meta Quest Developer Deep Dive
+# VR Hand Interactions & Inputs from ISDK (Unity & Unreal)
 
 Unlock the full potential of hand interactions on Meta Quest in this technical deep dive from members of the Meta Interaction SDK team. Product Designer Stella Mühlhaus and Software Engineer Dave Nelson explore the core principles, best practices, and powerful tools available to create intuitive and engaging hands-first interactions.
 

@@ -1,8 +1,8 @@
-# Get Started with Web and WebXR
+# Get Started with WebXR
 
 Bring your existing website to Horizon OS, optimized for VR devices, accessible through our built-in browser.
 
-## [Web/WebXR](https://developers.meta.com/horizon/develop/web)
+## [WebXR](https://developers.meta.com/horizon/develop/web)
 
 [WebXR First Steps](https://developers.meta.com/horizon/documentation/web/webxr-first-steps)
 
